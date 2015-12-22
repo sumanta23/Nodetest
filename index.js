@@ -1,8 +1,32 @@
-var http = require('http');
+var express = require('express')
+var app = express();
+var loki = require('lokijs');
+var bodyParser = require('body-parser');
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello Travis!\n'); // build should pass now!
-}).listen(1337, '127.0.0.1');
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
-console.log('Server running at http://127.0.0.1:1337/');
+var db = new loki('loki.json');
+var children = db.addCollection('children');
+
+app.set('port', (process.env.PORT || 3000))
+
+app.post('/', function(request, response) {
+    console.log(request.body);
+  children.insert({name:request.body}) 
+  response.send('Hello World!');
+})
+
+app.get('/', function(request, response) {
+  var y = children.get(1); 
+  console.log(y);
+  response.send(y);
+})
+
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
+})
+
