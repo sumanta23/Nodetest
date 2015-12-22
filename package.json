@@ -1,0 +1,16 @@
+{
+    "name": "learn-node-travis",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sumanta23/misc.git"
+    },
+    "description": "Simple nodejs, travis and grunt demo",
+    "author": "sumanta23",
+    "version": "1.0.0",
+    "devDependencies": {
+        "jshint": "^2.8.0"
+    },
+    "scripts": {
+        "test": "./node_modules/jshint/bin/jshint index.js"
+    }
+}
