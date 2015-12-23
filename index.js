@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var loki = require('lokijs');
 var bodyParser = require('body-parser');
+var uuid = require("node-uuid");
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -11,22 +12,20 @@ app.use(bodyParser.json());
 var db = new loki('loki.json');
 var children = db.addCollection('children');
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 1234));
 
 app.post('/', function(request, response) {
-    console.log(request.body);
-  children.insert({name:request.body}); 
-  response.send('Hello World!');
+    var id = uuid.v1();
+    children.insert({id: id, name:request.body}); 
+    response.send(id);
 });
 
 app.get('/', function(request, response) {
-  var y = children.get(1); 
-  console.log(y);
-  response.send(y);
+    var y = children.find({id: request.query.id}); 
+    response.send(y[0].name);
 });
 
 
 app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'));
+    console.log("Node app is running at localhost:" + app.get('port'));
 });
-
