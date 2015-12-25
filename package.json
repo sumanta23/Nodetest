@@ -1,25 +1,25 @@
 {
-  "name": "node-test",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sumanta23/misc.git"
-  },
-  "description": "Simple nodejs, travis and grunt demo",
-  "author": "sumanta23",
-  "version": "1.0.0",
-  "devDependencies": {
-    "jshint": "^2.8.0"
-  },
-  "dependencies": {
-    "body-parser": "^1.14.2",
-    "express": "^4.13.3",
-    "lokijs": "^1.3.10",
-    "lodash": "^3.10.0",
-    "bluebird": "^2.9.30",
-    "node-uuid": "^1.4.3",
-    "redis": "^0.12.1"
-  },
-  "scripts": {
-    "test": "./node_modules/jshint/bin/jshint index.js"
-  }
+    "name"       : "node-test",
+    "repository" : {
+        "type" : "git",
+        "url"  : "https : //github.com/sumanta23/misc.git"
+    },
+    "description"     : "Simple nodejs, travis and grunt demo",
+    "author"          : "sumanta23",
+    "version"         : "1.0.0",
+    "devDependencies" : {
+        "jshint"   : "^2.8.0"
+    },
+    "dependencies"  : {
+        "body-parser" : "^1.14.2",
+        "express"     : "^4.13.3",
+        "lokijs"      : "^1.3.10",
+        "lodash"      : "^3.10.0",
+        "bluebird"    : "^2.9.30",
+        "node-uuid"   : "^1.4.3",
+        "redis"       : "^0.12.1"
+    },
+    "scripts"       : {
+        "test": "./node_modules/jshint/bin/jshint index.js"
+    }
 }

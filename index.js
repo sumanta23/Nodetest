@@ -1,16 +1,16 @@
-var express = require('express');
-var app = express();
-var loki = require('lokijs');
+var express    = require('express');
+var app        = express();
+var loki       = require('lokijs');
 var bodyParser = require('body-parser');
-var uuid = require("node-uuid");
+var uuid       = require("node-uuid");
+var db         = new loki('loki.json');
+var children   = db.addCollection('children');
+
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-
-var db = new loki('loki.json');
-var children = db.addCollection('children');
 
 app.set('port', (process.env.PORT || 1234));
 
